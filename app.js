@@ -65,9 +65,37 @@
   <button id="clothingBtn">Display Selected Style</button>
   <p id="clothingDisplay"></p>
 
+  <label>Select a Color:</label>
+  <select id="selectColor">
+    <option value="Red">Red</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Green">Green</option>
+  </select>
+
+  <p id="selectColorResult"></p>
+
+
+  <label>Select a Day:</label>
+  <select id="daySelectDropdown">
+    <option value="Monday">Monday</option>
+    <option value="Sunday">Sunday</option>
+    <option value="Thursday">Thursday</option>
+  </select>
+  <p id="dayResult"></p>
+
+
+  <label>Select a Country:</label>
+  <select id="countrySelectDropdown">
+    <option value="usa">USA</option>
+    <option value="canada">Canada</option>
+    <option value="southKorea">South Korea</option>
+  </select>
+  <p id="countryResult"></p>
+
 
   <script>
 
+  
     const genderRadioBtn = document.getElementsByName('gender')
     const genderResult = document.getElementById('genderResult')
 
@@ -191,6 +219,47 @@
       }
     })
 
+ const colorSelect = document.getElementById('selectColor')
+    const selectColorResult = document.getElementById('selectColorResult')
+
+    colorSelect.addEventListener("change", function () {
+      const selectedColor = colorSelect.value
+      selectColorResult.textContent = `You Selected: ${selectedColor}`
+    })
+
+
+    const daySelect = document.getElementById('daySelectDropdown')
+    const dayResult = document.getElementById('dayResult')
+
+    daySelect.addEventListener('change', function () {
+      const selectedDay = daySelect.value
+
+      if (selectedDay === "Sunday" || selectedDay === "Saturday") {
+        dayResult.textContent = `It's a Weekend.`
+      } else {
+        dayResult.textContent = `It is a weekday.`
+      }
+    })
+
+
+
+    const countryDropdown = document.getElementById('countrySelectDropdown')
+    const countryResult = document.getElementById('countryResult')
+
+    countryDropdown.addEventListener('change', function () {
+      const selectedCountry = countryDropdown.value;
+
+      const capitals = {
+        usa: "Washington, D.C.",
+        canada: "Ottawa",
+        southKorea: "Seoul"
+      }
+
+      countryResult.textContent = `Capital: ${capitals[selectedCountry]}`
+
+    })
+
+      
   </script>
 </body>
 
